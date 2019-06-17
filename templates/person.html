@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>CaltechPEOPLE</title>
+    <link rel="stylesheet" href="/static/site.css">
+</head>
+
+<body>
+
+<h3>CaltechPEOPLE</h3>
+
+<h4>{{ person['givenName'] }} {{ person['familyName'] }}
+<font size="-3">(PROFILE
+<a href="http://feeds.library.caltech.edu.s3-website-us-west-2.amazonaws.com/profiles/{{ person_ID }}" target="_blank"><img src="/static/external-link.png" width="10" height="10"></a>)</font></h4>
+
+<table>
+<tr><td align="right">id</td><td> : </td><td>{{ person_ID }}</td></tr>
+<tr><td align="right">family name</td><td> : </td><td>{{ person['familyName'] }}</td></tr>
+<tr><td align="right">given name(s)</td><td> : </td><td>{{ person['givenName'] }}</td></tr>
+{% if person['thesis_ID'] %}
+<tr><td align="right">thesis ID</td><td> : </td><td>{{ person['thesis_ID'] }}
+<a href="https://thesis.library.caltech.edu/view/author/{{ person['thesis_ID'] }}.html" target="_blank"><img src="/static/external-link.png" width="10" height="10"></a></td></tr>
+{% endif %}
+{% if person['advisor_ID'] %}
+<tr><td align="right">advisor ID</td><td> : </td><td>{{ person['advisor_ID'] }}
+<a href="https://thesis.library.caltech.edu/view/advisor/{{ person['advisor_ID'] }}.html" target="_blank"><img src="/static/external-link.png" width="10" height="10"></a></td></tr>
+{% endif %}
+{% if person['author_ID'] %}
+<tr><td align="right">authors ID</td><td> : </td><td>{{ person['author_ID'] }}
+<a href="https://authors.library.caltech.edu/view/person-az/{{ person['author_ID'] }}.html" target="_blank"><img src="/static/external-link.png" width="10" height="10"></a></td></tr>
+{% endif %}
+{% if person['archives_ID'] %}
+<tr><td align="right">archivesSpace ID</td><td> : </td><td>{{ person['archives_ID'] }}
+<a href="https://collections.archives.caltech.edu/agents/people/{{ person['archives_ID'] }}" target="_blank"><img src="/static/external-link.png" width="10" height="10"></a></td></tr>
+{% endif %}
+{% if person['directory_ID'] %}
+<tr><td align="right">Caltech ID</td><td> : </td><td>{{ person['directory_ID'] }}
+<a href="https://directory.caltech.edu/personnel/{{ person['directory_ID'] }}" target="_blank"><img src="/static/external-link.png" width="10" height="10"></a></td></tr>
+{% endif %}
+{% if person['viaf_ID'] %}
+<tr><td align="right">viaf</td><td> : </td><td>{{ person['viaf_ID'] }}
+<a href="https://viaf.org/viaf/{{ person['viaf_ID'] }}" target="_blank"><img src="/static/external-link.png" width="10" height="10"></a></td></tr>
+{% endif %}
+{% if person['lcnaf_ID'] %}
+<tr><td align="right">lcnaf</td><td> : </td><td>{{ person['lcnaf_ID'] }}
+<a href="http://id.loc.gov/authorities/names/{{ person['lcnaf_ID'] }}.html" target="_blank"><img src="/static/external-link.png" width="10" height="10"></a></td></tr>
+{% endif %}
+{% if person['isni_ID'] %}
+<tr><td align="right">isni</td><td> : </td><td>{{ person['isni_ID'] }}
+<a href="http://www.isni.org/{{ person['isni_ID'] }}" target="_blank"><img src="/static/external-link.png" width="10" height="10"></a></td></tr>
+{% endif %}
+{% if person['wikidata_ID'] %}
+<tr><td align="right">wikidata</td><td> : </td><td>{{ person['wikidata_ID'] }}
+<a href="https://www.wikidata.org/wiki/{{ person['wikidata_ID'] }}" target="_blank"><img src="/static/external-link.png" width="10" height="10"></a></td></tr>
+{% endif %}
+{% if person['snac_ID'] %}
+<tr><td align="right">snac</td><td> : </td><td>{{ person['snac_ID'] }}
+<a href="http://n2t.net/ark:/99166/{{ person['snac_ID'] }}" target="_blank"><img src="/static/external-link.png" width="10" height="10"></a></td></tr>
+{% endif %}
+{% if person['orc_ID'] %}
+<tr><td align="right">ORCID</td><td> : </td><td>{{ person['orc_ID'] }}
+<a href="https://orcid.org/{{ person['orc_ID'] }}" target="_blank"><img src="/static/external-link.png" width="10" height="10"></a></td></tr>
+{% endif %}
+{% if person['image'] %}
+<tr><td align="right">image</td><td> : </td><td>{{ person['image'] }}
+<a href="{{ person['image'] }}" target="_blank"><img src="/static/external-link.png" width="10" height="10"></a></td></tr>
+{% endif %}
+</table>
+
+
+<p><a href="{{ url_for('main_menu') }}">return</a></p>
+
+
+</body>
+
+</html>
