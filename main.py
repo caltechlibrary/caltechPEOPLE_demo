@@ -113,7 +113,11 @@ app = Flask(__name__)
 @app.route('/', methods=['GET', 'POST'])
 def main_menu():
     if request.method != 'POST': # goto form
-        return render_template('index.html', searchResult=[], auCount=len(authors), adCount=len(advisors), thCount=len(theses), arCount=len(archives))
+        return render_template('index.html', searchResult=[], 
+                        given_srch="", family_srch="", rslt=False,
+                        aut=False, adv=False, the=False, arc=False,
+                        auCount=len(authors), adCount=len(advisors), 
+                        thCount=len(theses), arCount=len(archives))
     else: # data returned from form
         aut, adv, the, arc = False, False, False, False
         if request.form.get('aut'):
@@ -125,7 +129,11 @@ def main_menu():
         if request.form.get('arc'):
             arc = True
         searchResult = search(request.form['given'], request.form['family'], aut, adv, the, arc)
-        return render_template('index.html', searchResult=searchResult, count=len(searchResult), auCount=len(authors), adCount=len(advisors), thCount=len(theses), arCount=len(archives))
+        return render_template('index.html', searchResult=searchResult, count=len(searchResult),
+                        given_srch=request.form['given'], family_srch=request.form['family'], rslt=True,
+                        aut=aut, adv=adv, the=the, arc=arc,
+                        auCount=len(authors), adCount=len(advisors), 
+                        thCount=len(theses), arCount=len(archives))
 
 @app.route('/person/<person_ID>')
 def displayPerson(person_ID):
