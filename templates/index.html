@@ -15,26 +15,38 @@
 <form method="post">
 <p><input name="given" id="given" value="" size="60"> in Given Name(s)</p>
 <p><input name="family" id="family" value="" size="60"> in Family Name</p>
-<p>limit to: <input type="checkbox" name="aut" value="1">AUTHORS ({{ auCount }})
-<input type="checkbox" name="adv" value="1">Thesis advisors ({{ adCount }})
+<p>limit to: <input type="checkbox" name="aut" value="1" checked>AUTHORS ({{ auCount }})
+<input type="checkbox" name="adv" value="1" checked>Thesis advisors ({{ adCount }})
 <input type="checkbox" name="the" value="1">Thesis authors ({{ thCount }})
-<input type="checkbox" name="arc" value="1">ArchivesSpace ({{ arCount }})</p>
+<input type="checkbox" name="arc" value="1" checked>ArchivesSpace ({{ arCount }})</p>
 <p>
 <input type="submit" value="submit">
+{% if rslt %}<a href="{{ url_for('main_menu') }}">new search</a>{% endif %}
 </p>
 </form>
 
+{% if rslt %}
 <p>
-{% if searchResult == [] %}
-No search results
+Search results for "{{ given_srch }}" and "{{ family_srch }}" in
+{% if aut %} - authors {% endif %}
+{% if adv %} - advisors {% endif %}
+{% if the %} - thesis {% endif %}
+{% if arc %} - archives {% endif %}
+({{ count }}):
+</p>
+<p>
+{% if count==0 %}
+Nothing found.
 {% else %}
-Search results ({{ count }}):</p><p>
 {% for item in searchResult %}
 <a href = "{{ url_for('displayPerson', person_ID=item[0]) }}">{{ item[1] }}</a><br>
 {% endfor %}
 {% endif %}
 </p>
+{% endif %}
+
 
 </body>
 
 </html>
+
