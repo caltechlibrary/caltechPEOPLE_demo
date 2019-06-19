@@ -68,9 +68,7 @@
 {% endif %}
 </table>
 
-
-<p><a href="{{ url_for('main_menu') }}">new search</a></p>
-
+<p><button onclick="window.location.href = '{{ url_for('upd_person', person_ID=person_ID) }}';">update</button> <a href="{{ url_for('main_menu') }}">new search</a></p>
 
 </body>
 

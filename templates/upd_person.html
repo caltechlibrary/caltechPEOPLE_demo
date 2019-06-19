@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>CaltechPEOPLE</title>
+    <link rel="stylesheet" href="/static/site.css">
+</head>
+
+<body>
+
+<h3>CaltechPEOPLE</h3>
+
+<h4>{{ person['givenName'] }} {{ person['familyName'] }}
+<font size="-3">(PROFILE
+<a href="http://feeds.library.caltech.edu.s3-website-us-west-2.amazonaws.com/profiles/{{ person_ID }}" target="_blank"><img src="/static/external-link.png" width="10" height="10"></a>)</font></h4>
+
+<form method="post">
+<input type="hidden" name="person_ID" value="{{person_ID}}">
+
+<table>
+<tr><td align="right">id</td><td> : </td><td>{{ person_ID }}</td></tr>
+<tr><td align="right">family name</td><td> : </td><td><input name="familyName" value="{{ person['familyName'] }}" size="30" required></td></tr>
+<tr><td align="right">given name(s)</td><td> : </td><td><input name="givenName" value="{{ person['givenName'] }}" size="30"></td></tr>
+<tr><td align="right">thesis ID</td><td> : </td><td><input name="thesis_ID" value="{{ person['thesis_ID'] }}" size="30">
+<a href="https://thesis.library.caltech.edu/view/author/{{ person['thesis_ID'] }}.html" target="_blank"><img src="/static/external-link.png" width="10" height="10"></a></td></tr>
+<tr><td align="right">advisor ID</td><td> : </td><td><input name="advisor_ID" value="{{ person['advisor_ID'] }}" size="30">
+<a href="https://thesis.library.caltech.edu/view/advisor/{{ person['advisor_ID'] }}.html" target="_blank"><img src="/static/external-link.png" width="10" height="10"></a></td></tr>
+<tr><td align="right">authors ID</td><td> : </td><td><input name="author_ID" value="{{ person['author_ID'] }}" size="30">
+<a href="https://authors.library.caltech.edu/view/person-az/{{ person['author_ID'] }}.html" target="_blank"><img src="/static/external-link.png" width="10" height="10"></a></td></tr>
+<tr><td align="right">archivesSpace ID</td><td> : </td><td><input name="archives_ID" value="{{ person['archives_ID'] }}" size="30">
+<a href="https://collections.archives.caltech.edu/agents/people/{{ person['archives_ID'] }}" target="_blank"><img src="/static/external-link.png" width="10" height="10"></a></td></tr>
+<tr><td align="right">Caltech ID</td><td> : </td><td><input name="directory_ID" value="{{ person['directory_ID'] }}" size="30">
+<a href="https://directory.caltech.edu/personnel/{{ person['directory_ID'] }}" target="_blank"><img src="/static/external-link.png" width="10" height="10"></a></td></tr>
+<tr><td align="right">viaf</td><td> : </td><td><input name="viaf_ID" value="{{ person['viaf_ID'] }}" size="30">
+<a href="https://viaf.org/viaf/{{ person['viaf_ID'] }}" target="_blank"><img src="/static/external-link.png" width="10" height="10"></a></td></tr>
+<tr><td align="right">lcnaf</td><td> : </td><td><input name="lcnaf_ID" value="{{ person['lcnaf_ID'] }}" size="30">
+<a href="http://id.loc.gov/authorities/names/{{ person['lcnaf_ID'] }}.html" target="_blank"><img src="/static/external-link.png" width="10" height="10"></a></td></tr>
+<tr><td align="right">isni</td><td> : </td><td><input name="isni_ID" value="{{ person['isni_ID'] }}" size="30">
+<a href="http://www.isni.org/{{ person['isni_ID'] }}" target="_blank"><img src="/static/external-link.png" width="10" height="10"></a></td></tr>
+<tr><td align="right">wikidata</td><td> : </td><td><input name="wikidata_ID" value="{{ person['wikidata_ID'] }}" size="30">
+<a href="https://www.wikidata.org/wiki/{{ person['wikidata_ID'] }}" target="_blank"><img src="/static/external-link.png" width="10" height="10"></a></td></tr>
+<tr><td align="right">snac</td><td> : </td><td><input name="snac_ID" value="{{ person['snac_ID'] }}" size="30">
+<a href="http://n2t.net/ark:/99166/{{ person['snac_ID'] }}" target="_blank"><img src="/static/external-link.png" width="10" height="10"></a></td></tr>
+<tr><td align="right">ORCID</td><td> : </td><td><input name="orc_ID" value="{{ person['orc_ID'] }}" size="30">
+<a href="https://orcid.org/{{ person['orc_ID'] }}" target="_blank"><img src="/static/external-link.png" width="10" height="10"></a></td></tr>
+<tr><td align="right">image</td><td> : </td><td><input name="image" value="{{ person['image'] }}" size="30">
+<a href="{{ person['image'] }}" target="_blank"><img src="/static/external-link.png" width="10" height="10"></a></td></tr>
+</table>
+
+<p><input type="submit" value="save"> <a href="{{ url_for('displayPerson', person_ID=person_ID) }}">cancel</a></p>
+
+</form>
+
+</body>
+
+</html>
