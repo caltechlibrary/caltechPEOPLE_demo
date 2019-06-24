@@ -15,10 +15,10 @@
 <form method="post">
 <p><input name="given" id="given" value="" size="60"> in Given Name(s)</p>
 <p><input name="family" id="family" value="" size="60"> in Family Name</p>
-<p>limit to: <input type="checkbox" name="aut" value="1" checked>AUTHORS ({{ auCount }})
-<input type="checkbox" name="adv" value="1" checked>Thesis advisors ({{ adCount }})
+<p>limit to: <input type="checkbox" name="aut" value="1">AUTHORS ({{ auCount }})
+<input type="checkbox" name="adv" value="1">Thesis advisors ({{ adCount }})
 <input type="checkbox" name="the" value="1">Thesis authors ({{ thCount }})
-<input type="checkbox" name="arc" value="1" checked>ArchivesSpace ({{ arCount }})</p>
+<input type="checkbox" name="arc" value="1">ArchivesSpace ({{ arCount }})</p>
 <p>
 <input type="submit" value="submit">
 {% if rslt %}<a href="{{ url_for('main_menu') }}">new search</a>{% endif %}

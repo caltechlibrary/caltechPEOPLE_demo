@@ -1,0 +1,6 @@
+caltechpeople.tsv
+processdata.py
+cp.bat
+__pycache__/
+*.pyc
+throop2.pem
